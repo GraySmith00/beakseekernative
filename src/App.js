@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
+import { getPosition } from './utils/apiCalls';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -16,9 +18,19 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  state = {
+    latitude: '',
+    longitude: '',
+  };
+
+  async componentDidMount() {
+    const { latitude, longitude } = await getPosition();
+    this.setState({ latitude, longitude });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Hey there partner!</Text>
