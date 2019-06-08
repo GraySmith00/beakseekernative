@@ -4,6 +4,7 @@ import { Button, Container, Content, Footer, FooterTab } from 'native-base';
 
 import GSHeader from './components/GSHeader/GSHeader';
 import GSFooter from './components/GSFooter/GSFooter';
+import AppNavigator from './hoc/AppNavigator/AppNavigator';
 
 import { getPosition } from './utils/apiCalls';
 
@@ -23,11 +24,7 @@ export default class App extends Component {
     return (
       <Container>
         <GSHeader />
-        <Content>
-          <Button primary>
-            <Text> Primary </Text>
-          </Button>
-        </Content>
+        {/* <AppNavigator /> */}
         <GSFooter />
       </Container>
     );
